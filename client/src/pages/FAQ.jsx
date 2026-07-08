@@ -102,7 +102,6 @@ const FAQ = () => {
                   <div key={idx} className="border-b border-ink/10 py-6">
                     <button
                       onClick={() => toggleFAQ(idx)}
-                      onMouseEnter={() => setOpenIndex(idx)}
                       className="w-full flex items-start gap-4 text-left group"
                     >
                       {/* Plus/Minus Indicator */}
