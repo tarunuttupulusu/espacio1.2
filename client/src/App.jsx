@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -28,6 +28,15 @@ import AdminProjects from './pages/admin/AdminProjects';
 import AdminProducts from './pages/admin/AdminProducts';
 import { AdminTestimonials, AdminFAQs, AdminSettings, AdminMedia } from './pages/admin/AdminCMS';
 
+// ── Scroll to top on every route change ─────────────────────────────────────
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+};
+
 // Shared Layout Wrapper
 const MainLayout = ({ children }) => (
   <div className="flex flex-col min-h-screen">
@@ -42,6 +51,7 @@ function App() {
     <HelmetProvider>
       <AuthProvider>
         <Router>
+          <ScrollToTop />
           <CustomCursor />
           <Routes>
             {/* ── Public Routes ─────────────────────────────────────── */}
