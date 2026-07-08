@@ -5,6 +5,7 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import axios from 'axios';
 import SEO from '../components/common/SEO';
 import Logo from '../components/common/Logo';
+import DecryptedText from '../components/ui/DecryptedText';
 
 const Reveal = ({ children, delay = 0, className = '' }) => {
   const ref = useRef(null);
@@ -510,7 +511,9 @@ const Home = () => {
 
             <Reveal delay={0.1}>
               <h2 className="font-display text-[clamp(28px,3.5vw,44px)] font-medium leading-[1.12] tracking-tight text-ink mb-5">
-                Got Questions?<br />We Have Answers.
+                <DecryptedText text="Got Questions?" animateOn="view" revealDirection="center" />
+                <br />
+                <DecryptedText text="We Have Answers." animateOn="view" revealDirection="center" />
               </h2>
             </Reveal>
 
@@ -553,7 +556,12 @@ const Home = () => {
                           className="overflow-hidden"
                         >
                           <p className="pl-10 pr-4 pb-4 pt-2 font-sans text-[14.5px] text-ink-soft leading-relaxed">
-                            {faq.a}
+                            <DecryptedText
+                              text={faq.a}
+                              animateOn="mount"
+                              sequential={true}
+                              speed={18}
+                            />
                           </p>
                         </motion.div>
                       )}
