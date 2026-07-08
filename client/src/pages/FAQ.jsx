@@ -126,8 +126,8 @@ const FAQ = () => {
                             <DecryptedText 
                               text={faq.a} 
                               animateOn="view" 
-                              speed={15} 
-                              maxIterations={12} 
+                              speed={45} 
+                              maxIterations={15} 
                               className="text-walnut" 
                               encryptedClassName="text-gold font-mono" 
                             />
