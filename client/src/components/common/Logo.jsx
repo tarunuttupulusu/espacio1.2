@@ -108,7 +108,8 @@ const LargeLogo = ({ onComplete }) => (
       <motion.text
         key={i}
         fontSize="50"
-        fontFamily="Georgia, 'Times New Roman', serif"
+        fontFamily="'Cinzel', serif"
+        fontWeight="700"
         fill={INK}
         textAnchor="middle"
         x={210 - 3 * 31 + i * 31}
@@ -252,7 +253,7 @@ const SmallLogo = ({ scrolled }) => {
         transition={{ delay: 0.7, duration: 0.45, ease: 'easeOut' }}
       >
         <span style={{
-          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontFamily: "'Cinzel', serif",
           fontSize: '22px',
           letterSpacing: '0.25em',
           fontWeight: 700,

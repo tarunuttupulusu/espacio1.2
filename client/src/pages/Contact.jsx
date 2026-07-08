@@ -333,12 +333,12 @@ const Contact = () => {
             {error && <p className="font-sans text-xs text-red-500 bg-red-50 border border-red-200 px-4 py-3 rounded-input">{error}</p>}
 
             <div className="flex items-center justify-between pt-4">
-              <button type="button" onClick={handleBack} className="flex items-center space-x-2 font-sans text-xs uppercase tracking-widest text-walnut hover:text-charcoal font-bold py-3 px-5 rounded-button border border-walnut/10 hover:border-walnut/30 transition-all">
+              <button type="button" onClick={handleBack} className="flex items-center space-x-2 font-btn text-xs uppercase tracking-widest text-walnut hover:text-charcoal font-semibold py-3 px-5 rounded-button border border-walnut/10 hover:border-walnut/30 transition-all">
                 <ArrowLeft size={14} />
                 <span>Back</span>
               </button>
               <button type="submit" disabled={submitting}
-                className="cursor-pointer bg-gold hover:bg-charcoal hover:text-cream text-charcoal px-8 py-4 rounded-xl border-[1px] border-walnut/15 shadow-[0px_4px_16px_rgba(201,169,110,0.15)] hover:shadow-[0px_4px_32px_rgba(16,16,20,0.3)] font-sans text-xs uppercase tracking-widest font-bold transition-all duration-300 hover:scale-103 disabled:opacity-50 disabled:cursor-not-allowed group"
+                className="cursor-pointer bg-gold hover:bg-charcoal hover:text-cream text-charcoal px-8 py-4 rounded-xl border-[1px] border-walnut/15 shadow-[0px_4px_16px_rgba(201,169,110,0.15)] hover:shadow-[0px_4px_32px_rgba(16,16,20,0.3)] font-btn text-xs uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-103 disabled:opacity-50 disabled:cursor-not-allowed group"
               >
                 {submitting ? (
                   <div className="flex items-center gap-2">
@@ -376,13 +376,13 @@ const WizardNav = ({ step, total, onNext, onBack }) => {
   return (
     <div className="flex items-center justify-between pt-4">
       {step > 1 ? (
-        <button type="button" onClick={onBack} className="flex items-center space-x-2 font-sans text-xs uppercase tracking-widest text-walnut hover:text-charcoal font-bold py-3 px-5 rounded-button border border-walnut/10 hover:border-walnut/30 transition-all">
+        <button type="button" onClick={onBack} className="flex items-center space-x-2 font-btn text-xs uppercase tracking-widest text-walnut hover:text-charcoal font-semibold py-3 px-5 rounded-button border border-walnut/10 hover:border-walnut/30 transition-all">
           <ArrowLeft size={14} />
           <span>Back</span>
         </button>
       ) : <div />}
       <button type="button" onClick={onNext}
-        className="cursor-pointer bg-charcoal text-cream hover:bg-gold hover:text-charcoal shadow-[0px_4px_16px_rgba(16,16,20,0.15)] hover:shadow-[0px_4px_24px_rgba(201,169,110,0.3)] px-8 py-4 rounded-xl border-[1px] border-walnut/15 font-sans text-xs uppercase tracking-widest font-bold transition-all duration-300 hover:scale-103 group"
+        className="cursor-pointer bg-charcoal text-cream hover:bg-gold hover:text-charcoal shadow-[0px_4px_16px_rgba(16,16,20,0.15)] hover:shadow-[0px_4px_24px_rgba(201,169,110,0.3)] px-8 py-4 rounded-xl border-[1px] border-walnut/15 font-btn text-xs uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-103 group"
       >
         <div className="relative overflow-hidden h-[16px] flex items-center justify-center">
           <div className="invisible flex items-center gap-2">
