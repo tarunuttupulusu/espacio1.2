@@ -42,8 +42,12 @@ const Contact = () => {
 
   const schemas = [null, step1Schema, step2Schema, step3Schema];
 
+  const formRef = React.useRef(null);
+
   React.useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
   }, [step, submitted]);
 
   const { register, handleSubmit, formState: { errors }, getValues, trigger, setValue, watch } = useForm({
@@ -133,7 +137,7 @@ const Contact = () => {
       </section>
 
       {/* WIZARD */}
-      <section className="max-w-[820px] mx-auto px-6 py-20">
+      <section ref={formRef} className="max-w-[820px] mx-auto px-6 py-20 scroll-mt-28">
         {/* Step indicator */}
         <div className="mb-14 space-y-4">
           <div className="flex items-center justify-between">
