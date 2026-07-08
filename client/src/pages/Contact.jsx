@@ -42,6 +42,10 @@ const Contact = () => {
 
   const schemas = [null, step1Schema, step2Schema, step3Schema];
 
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [step, submitted]);
+
   const { register, handleSubmit, formState: { errors }, getValues, trigger, setValue, watch } = useForm({
     resolver: zodResolver(schemas[step] || z.object({})),
     defaultValues: formData,
