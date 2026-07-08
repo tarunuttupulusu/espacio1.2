@@ -324,13 +324,19 @@
   letter-spacing: 0.03em;
   text-transform: uppercase;
   border-radius: 99rem;
-  border: 1.5px solid currentColor;
+  border: 1.5px solid #101014;
   overflow: hidden;
   padding: 0.5rem 1.7rem;
   position: relative;
   text-decoration: none;
-  background-color: transparent;
+  background-color: #101014;
+  color: #ffffff !important;
   transition: box-shadow 0.3s ease;
+}
+
+/* For cinematic state when navbar is transparent, we can make the border white for contrast */
+.btn-nav-split.cinematic {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .btn-nav-split span {
@@ -353,11 +359,8 @@
   z-index: 1;
 }
 
-/* Default state - fill with white (for cinematic dark background navbar) */
-.btn-nav-split.cinematic {
-  color: #ffffff;
-}
-.btn-nav-split.cinematic::before {
+/* Fill with white on hover for both states */
+.btn-nav-split::before {
   background: linear-gradient(
     90deg,
     #ffffff 25%,
@@ -368,7 +371,8 @@
     transparent 0
   );
 }
-.btn-nav-split.cinematic::after {
+
+.btn-nav-split::after {
   --progress: -101%;
   background: linear-gradient(
     90deg,
@@ -379,35 +383,6 @@
     transparent 0,
     transparent 75%,
     #ffffff 0
-  );
-}
-
-/* Light state - fill with black/ink (for scrolled/light background navbar) */
-.btn-nav-split.scrolled {
-  color: #101014;
-}
-.btn-nav-split.scrolled::before {
-  background: linear-gradient(
-    90deg,
-    #101014 25%,
-    transparent 0,
-    transparent 50%,
-    #101014 0,
-    #101014 75%,
-    transparent 0
-  );
-}
-.btn-nav-split.scrolled::after {
-  --progress: -101%;
-  background: linear-gradient(
-    90deg,
-    transparent 0,
-    transparent 25%,
-    #101014 0,
-    #101014 50%,
-    transparent 0,
-    transparent 75%,
-    #101014 0
   );
 }
 
