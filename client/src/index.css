@@ -257,17 +257,17 @@
   display: inline-block;
   width: 160px;
   height: 52px;
-  background: linear-gradient(to top, #00154c, #12376e, #23487f);
+  background: transparent;
   color: #fff !important;
   border-radius: 50px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   outline: none;
   cursor: pointer;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   font-family: var(--font-sans), system-ui, sans-serif;
   text-decoration: none;
+  transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
 }
 
 .btn-sliding-cta span {
@@ -293,6 +293,13 @@
   top: 150%;
   left: 0;
   transform: translateY(-50%);
+}
+
+.btn-sliding-cta:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #101014 !important;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
 }
 
 .btn-sliding-cta:hover .btn-sliding-cta-text-one {
