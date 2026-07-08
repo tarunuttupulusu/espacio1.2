@@ -55,11 +55,11 @@ const Navbar = () => {
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
         isNavLight
           ? 'bg-bg/95 backdrop-blur-md shadow-sm px-0 pt-0'
-          : 'bg-transparent px-5 pt-5 lg:px-12 lg:pt-[10px]'
+          : 'bg-transparent px-5 pt-7 lg:px-12 lg:pt-[18px]'
       }`}
       >
         <div className={`max-w-[1440px] mx-auto pl-6 pr-10 flex items-center justify-between transition-all duration-700 ${
-          isNavLight ? 'py-4' : 'pt-[18px] pb-[10px]'
+          isNavLight ? 'py-5' : 'pt-[26px] pb-[12px]'
         }`}>
 
           {/* Logo */}
