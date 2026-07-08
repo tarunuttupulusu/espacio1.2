@@ -344,13 +344,23 @@ export default function DecryptedText({
   useEffect(() => {
     if (animateOn === 'click') {
       encryptInstantly();
+    } else if (animateOn === 'mount') {
+      const emptySet = new Set();
+      setRevealedIndices(emptySet);
+      setDisplayText(shuffleText(text, emptySet));
+      setIsDecrypted(false);
+      // Small delay to ensure render sequence starts cleanly
+      const t = setTimeout(() => {
+        triggerDecrypt();
+      }, 50);
+      return () => clearTimeout(t);
     } else {
       setDisplayText(text);
       setIsDecrypted(true);
     }
     setRevealedIndices(new Set());
     setDirection('forward');
-  }, [animateOn, text, encryptInstantly]);
+  }, [animateOn, text, encryptInstantly, triggerDecrypt, shuffleText]);
 
   const animateProps =
     animateOn === 'hover' || animateOn === 'inViewHover'

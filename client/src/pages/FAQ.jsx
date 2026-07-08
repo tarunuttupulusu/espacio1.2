@@ -125,7 +125,12 @@ const FAQ = () => {
                           className="overflow-hidden"
                         >
                           <div className="pl-8 pr-4 pt-3 font-sans text-sm text-walnut leading-relaxed">
-                            {faq.a}
+                            <DecryptedText
+                              text={faq.a}
+                              animateOn="mount"
+                              sequential={true}
+                              speed={18}
+                            />
                           </div>
                         </motion.div>
                       )}
