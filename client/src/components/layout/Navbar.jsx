@@ -77,11 +77,13 @@ const Navbar = () => {
             {/* CTA Button */}
             <Link 
               to="/contact"
-              className={`inline-flex items-center gap-2 font-sans text-[16px] font-medium px-6 py-3 rounded-full transition-all duration-300 ${
-                isNavLight 
-                  ? 'bg-ink text-bg hover:bg-bg-deep' 
-                  : 'bg-white text-ink hover:bg-white/90 shadow-md'
-              }`}
+              className="btn-split-slide"
+              style={{
+                '--btn-slide-bg': isNavLight ? '#ffffff' : '#101014',
+                '--btn-slide-border': isNavLight ? '#101014' : '#ffffff',
+                '--btn-slide-text': isNavLight ? '#000000' : '#ffffff',
+                '--btn-slide-fill': isNavLight ? '#101014' : '#ffffff',
+              }}
             >
               <span>Contact us</span>
               <ArrowUpRight size={14} />
