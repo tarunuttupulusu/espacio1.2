@@ -165,8 +165,75 @@ const LargeLogo = ({ onComplete }) => (
 );
 
 /* ═══════════════════════════════════════════════════════════════════
+   EMBLEM – reusable compact icon with glowing/flickering bulb
+   and inner 'E' glyph. Used in both headers and bottom menus.
+   ═══════════════════════════════════════════════════════════════════ */
+const LogoEmblem = ({ scrolled, size = 52 }) => {
+  const ink = scrolled ? INK : '#ffffff';
+
+  return (
+    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id={`glowGradEmblem-${scrolled ? 'light' : 'dark'}`} cx="42%" cy="45%" r="40%">
+          <stop offset="0%"   stopColor={BULB} stopOpacity="0.85" />
+          <stop offset="100%" stopColor={BULB} stopOpacity="0"    />
+        </radialGradient>
+      </defs>
+
+      {/* frame */}
+      <motion.path
+        d="M32 55 V95 H95 V30 H50"
+        stroke={ink} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+        transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+      />
+      {/* T-bar */}
+      <motion.path
+        d="M32 30 H57"
+        stroke={ink} strokeWidth="4" strokeLinecap="round"
+        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+        transition={{ delay: 0.2, duration: 0.35, ease: 'easeInOut' }}
+      />
+      {/* bulb glow (pulses infinitely) */}
+      <motion.circle cx="43" cy="53" r="16" fill={`url(#glowGradEmblem-${scrolled ? 'light' : 'dark'})`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.8, 0.2, 0.9, 0.3, 0.8] }}
+        transition={{ delay: 0.9, duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      {/* swinging lamp body */}
+      <motion.g
+        style={{ transformOrigin: '44.5px 30px' }}
+        initial={{ rotate: 0, opacity: 0, scaleY: 0.6 }}
+        animate={{ rotate: [0, 10, -7, 4, -2, 0], opacity: 1, scaleY: 1 }}
+        transition={{ delay: 0.55, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <path d="M44.5 30 V44" stroke={ink} strokeWidth="3.5" strokeLinecap="round" />
+        <polygon points="44.5,44 36,54 53,54" fill={ink} />
+        {/* filament/light line (flashes infinitely) */}
+        <motion.line x1="39" y1="56" x2="50" y2="56"
+          stroke={BULB} strokeWidth="2.5" strokeLinecap="round"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0.1, 1, 0.3, 1, 0.4, 1] }}
+          transition={{ delay: 1.2, duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </motion.g>
+      {/* E glyph */}
+      <motion.g stroke={ink} strokeWidth="4" strokeLinecap="round"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ delay: 0.7, duration: 0.4 }}
+      >
+        <line x1="70" y1="54" x2="70" y2="86" />
+        <line x1="70" y1="54" x2="88" y2="54" />
+        <line x1="70" y1="70" x2="85" y2="70" />
+        <line x1="70" y1="86" x2="88" y2="86" />
+      </motion.g>
+    </svg>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════
    SMALL  – compact navbar logo  (no disc, adaptive to bg)
-═══════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════════ */
 const SmallLogo = ({ scrolled }) => {
   const ink  = scrolled ? INK     : '#ffffff';
   const gold = scrolled ? GOLD    : '#d4aa7d';
@@ -175,60 +242,7 @@ const SmallLogo = ({ scrolled }) => {
   return (
     <div className="flex flex-row items-center gap-3.5 select-none">
       {/* compact emblem */}
-      <svg width="52" height="52" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="glowGradSmall" cx="42%" cy="45%" r="40%">
-            <stop offset="0%"   stopColor={BULB} stopOpacity="0.85" />
-            <stop offset="100%" stopColor={BULB} stopOpacity="0"    />
-          </radialGradient>
-        </defs>
-
-        {/* frame */}
-        <motion.path
-          d="M32 55 V95 H95 V30 H50"
-          stroke={ink} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"
-          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-          transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-        />
-        {/* T-bar */}
-        <motion.path
-          d="M32 30 H57"
-          stroke={ink} strokeWidth="4" strokeLinecap="round"
-          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-          transition={{ delay: 0.2, duration: 0.35, ease: 'easeInOut' }}
-        />
-        {/* bulb glow */}
-        <motion.circle cx="43" cy="53" r="16" fill="url(#glowGradSmall)"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0.55, 0.15, 0.7, 0.55] }}
-          transition={{ delay: 0.9, duration: 1.6, repeat: Infinity }}
-        />
-        {/* swinging lamp */}
-        <motion.g
-          style={{ transformOrigin: '44.5px 30px' }}
-          initial={{ rotate: 0, opacity: 0, scaleY: 0.6 }}
-          animate={{ rotate: [0, 10, -7, 4, -2, 0], opacity: 1, scaleY: 1 }}
-          transition={{ delay: 0.55, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <path d="M44.5 30 V44" stroke={ink} strokeWidth="3.5" strokeLinecap="round" />
-          <polygon points="44.5,44 36,54 53,54" fill={ink} />
-          <motion.line x1="39" y1="56" x2="50" y2="56"
-            stroke={BULB} strokeWidth="2" strokeLinecap="round"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            transition={{ delay: 1.6, duration: 0.3 }}
-          />
-        </motion.g>
-        {/* E glyph */}
-        <motion.g stroke={ink} strokeWidth="4" strokeLinecap="round"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.4 }}
-        >
-          <line x1="70" y1="54" x2="70" y2="86" />
-          <line x1="70" y1="54" x2="88" y2="54" />
-          <line x1="70" y1="70" x2="85" y2="70" />
-          <line x1="70" y1="86" x2="88" y2="86" />
-        </motion.g>
-      </svg>
+      <LogoEmblem scrolled={scrolled} size={52} />
 
       {/* text block */}
       <motion.div
@@ -271,7 +285,7 @@ const SmallLogo = ({ scrolled }) => {
 
 /* ═══════════════════════════════════════════════════════════════════
    PUBLIC export – routes to large or small based on `size` prop
-═══════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════════ */
 const Logo = ({ className = '', showText = true, scrolled = false, size = 'small', onComplete }) => {
   if (size === 'large') {
     return (
@@ -285,14 +299,7 @@ const Logo = ({ className = '', showText = true, scrolled = false, size = 'small
     <div className={className}>
       {showText
         ? <SmallLogo scrolled={scrolled} />
-        : (
-          <svg width="44" height="44" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M32 55 V95 H95 V30 H50" stroke={scrolled ? INK : '#fff'} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M32 30 H57"             stroke={scrolled ? INK : '#fff'} strokeWidth="4" strokeLinecap="round" />
-            <path d="M44.5 30 V44"           stroke={scrolled ? INK : '#fff'} strokeWidth="3.5" strokeLinecap="round" />
-            <polygon points="44.5,44 36,54 53,54" fill={scrolled ? INK : '#fff'} />
-          </svg>
-        )
+        : <LogoEmblem scrolled={scrolled} size={44} />
       }
     </div>
   );
