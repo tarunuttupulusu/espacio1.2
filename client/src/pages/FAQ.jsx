@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/common/SEO';
+import DecryptedText from '../components/ui/DecryptedText';
 
 const faqItems = [
   {
@@ -122,7 +123,14 @@ const FAQ = () => {
                           className="overflow-hidden"
                         >
                           <div className="pl-8 pr-4 pt-3 font-sans text-sm text-walnut leading-relaxed">
-                            {faq.a}
+                            <DecryptedText 
+                              text={faq.a} 
+                              animateOn="view" 
+                              speed={15} 
+                              maxIterations={12} 
+                              className="text-walnut" 
+                              encryptedClassName="text-gold font-mono" 
+                            />
                           </div>
                         </motion.div>
                       )}
