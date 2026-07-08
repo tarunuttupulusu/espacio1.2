@@ -217,15 +217,31 @@ export default function DecryptedText({
         } else {
           // Non-Sequential
           if (direction === 'forward') {
-            setDisplayText(shuffleText(text, prevRevealed));
+            const revealCount = Math.floor((currentIteration + 1) * (text.length / maxIterations));
+            const nextRevealed = new Set(prevRevealed);
+            const unrevealedIndices = [];
+            for (let i = 0; i < text.length; i++) {
+              if (!nextRevealed.has(i)) {
+                unrevealedIndices.push(i);
+              }
+            }
+            const toReveal = revealCount - nextRevealed.size;
+            for (let i = 0; i < toReveal && unrevealedIndices.length > 0; i++) {
+              const randIdx = Math.floor(Math.random() * unrevealedIndices.length);
+              const targetCharIdx = unrevealedIndices.splice(randIdx, 1)[0];
+              nextRevealed.add(targetCharIdx);
+            }
+
+            setDisplayText(shuffleText(text, nextRevealed));
             currentIteration++;
             if (currentIteration >= maxIterations) {
               clearInterval(intervalRef.current);
               setIsAnimating(false);
               setDisplayText(text);
               setIsDecrypted(true);
+              return fillAllIndices();
             }
-            return prevRevealed;
+            return nextRevealed;
           }
 
           // Non-Sequential Reverse
