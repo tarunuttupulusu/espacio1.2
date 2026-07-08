@@ -1,6 +1,6 @@
 import { useRef, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './GooeyNav.css';
+import '../common/GooeyNav.css';
 
 const GooeyNav = ({
   items,
