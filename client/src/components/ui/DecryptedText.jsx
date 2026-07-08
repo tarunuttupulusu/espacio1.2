@@ -381,9 +381,18 @@ export default function DecryptedText({
       <span aria-hidden="true">
         {displayText.split('').map((char, index) => {
           const isRevealedOrDone = revealedIndices.has(index) || (!isAnimating && isDecrypted);
+          
+          // Hide future characters during sequential animation to avoid showing full scrambled block
+          const isFuture = sequential && isAnimating && !isRevealedOrDone && 
+            orderRef.current && 
+            index !== orderRef.current[revealedIndices.size];
 
           return (
-            <span key={index} className={isRevealedOrDone ? className : encryptedClassName}>
+            <span 
+              key={index} 
+              className={isRevealedOrDone ? className : encryptedClassName}
+              style={isFuture ? { opacity: 0 } : {}}
+            >
               {char}
             </span>
           );
