@@ -5,6 +5,7 @@ import { z } from 'zod';
 import axios from 'axios';
 import { CheckCircle, ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
 import SEO from '../components/common/SEO';
+import DecryptedText from '../components/ui/DecryptedText';
 
 // ─── Validation schema per step ───────────────────────────────────────────────
 const step1Schema = z.object({
@@ -378,7 +379,15 @@ const ReviewSection = ({ title, items, onEdit }) => (
     {items.map((item, idx) => item.value ? (
       <div key={idx} className="flex items-start space-x-3 text-xs font-sans">
         <span className="text-walnut w-24 shrink-0">{item.label}</span>
-        <span className="text-charcoal font-medium">{item.value}</span>
+        <span className="text-charcoal font-medium">
+          <DecryptedText 
+            text={String(item.value)} 
+            speed={35} 
+            maxIterations={12} 
+            animateOn="hover"
+            useOriginalCharsOnly={false}
+          />
+        </span>
       </div>
     ) : null)}
   </div>
