@@ -77,16 +77,12 @@ const Navbar = () => {
             {/* CTA Button */}
             <Link 
               to="/contact"
-              className="btn-split-slide"
-              style={{
-                '--btn-slide-bg': isNavLight ? '#ffffff' : '#101014',
-                '--btn-slide-border': isNavLight ? '#101014' : '#ffffff',
-                '--btn-slide-text': isNavLight ? '#000000' : '#ffffff',
-                '--btn-slide-fill': isNavLight ? '#101014' : '#ffffff',
-              }}
+              className={`btn-nav-split ${isNavLight ? 'scrolled' : 'cinematic'}`}
             >
-              <span>Contact us</span>
-              <ArrowUpRight size={14} />
+              <span>
+                Contact us
+                <ArrowUpRight size={14} />
+              </span>
             </Link>
           </div>
 

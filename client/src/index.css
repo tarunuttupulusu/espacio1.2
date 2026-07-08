@@ -310,78 +310,110 @@
   top: 50%;
 }
 
-/* ── Split Slide CTA Button (btn-12 variant) ────────────────────────────── */
-.btn-split-slide {
+/* ── Split-fill Navigation Button ───────────────────────────────────────────── */
+.btn-nav-split {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: 99rem;
-  border: 1.5px solid var(--btn-slide-border, #ffffff);
-  background: var(--btn-slide-bg, #101014);
-  color: var(--btn-slide-text, #ffffff) !important;
-  overflow: hidden;
-  position: relative;
   cursor: pointer;
-  padding: 0.6rem 2rem;
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+  border-radius: 99rem;
+  border: 1.5px solid currentColor;
+  overflow: hidden;
+  padding: 0.5rem 1.7rem;
+  position: relative;
   text-decoration: none;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  background-color: transparent;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-nav-split span {
+  position: relative;
+  z-index: 10;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Base style for fill layers */
+.btn-nav-split::after,
+.btn-nav-split::before {
+  content: "";
+  inset: -1px;
+  position: absolute;
+  transform: translateY(var(--progress, 101%));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
 }
 
-.btn-split-slide span,
-.btn-split-slide svg {
-  mix-blend-mode: difference;
-  z-index: 10;
-  position: relative;
+/* Default state - fill with white (for cinematic dark background navbar) */
+.btn-nav-split.cinematic {
+  color: #ffffff;
 }
-
-.btn-split-slide::before,
-.btn-split-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  transform: translateY(var(--progress, 100%));
-  transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
-  z-index: -1;
-}
-
-.btn-split-slide::before {
+.btn-nav-split.cinematic::before {
   background: linear-gradient(
     90deg,
-    var(--btn-slide-fill, #ffffff) 25%,
+    #ffffff 25%,
     transparent 0,
     transparent 50%,
-    var(--btn-slide-fill, #ffffff) 0,
-    var(--btn-slide-fill, #ffffff) 75%,
+    #ffffff 0,
+    #ffffff 75%,
     transparent 0
   );
 }
-
-.btn-split-slide::after {
-  --progress: -100%;
+.btn-nav-split.cinematic::after {
+  --progress: -101%;
   background: linear-gradient(
     90deg,
     transparent 0,
     transparent 25%,
-    var(--btn-slide-fill, #ffffff) 0,
-    var(--btn-slide-fill, #ffffff) 50%,
+    #ffffff 0,
+    #ffffff 50%,
     transparent 0,
     transparent 75%,
-    var(--btn-slide-fill, #ffffff) 0
+    #ffffff 0
   );
 }
 
-.btn-split-slide:hover::before {
-  --progress: 0;
+/* Light state - fill with black/ink (for scrolled/light background navbar) */
+.btn-nav-split.scrolled {
+  color: #101014;
+}
+.btn-nav-split.scrolled::before {
+  background: linear-gradient(
+    90deg,
+    #101014 25%,
+    transparent 0,
+    transparent 50%,
+    #101014 0,
+    #101014 75%,
+    transparent 0
+  );
+}
+.btn-nav-split.scrolled::after {
+  --progress: -101%;
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 25%,
+    #101014 0,
+    #101014 50%,
+    transparent 0,
+    transparent 75%,
+    #101014 0
+  );
 }
 
-.btn-split-slide:hover::after {
-  --progress: 0;
+/* Hover state - slide fills to center */
+.btn-nav-split:hover::after,
+.btn-nav-split:hover::before {
+  --progress: 0%;
 }
-
 
