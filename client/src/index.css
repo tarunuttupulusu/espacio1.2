@@ -251,3 +251,55 @@
 .btn-outline:hover {
   border-color: #101014; background: #f4f4f6;
 }
+
+/* ── sliding-rolling cta button ─────────────────────────────────────────────── */
+.btn-sliding-cta {
+  display: inline-block;
+  width: 160px;
+  height: 52px;
+  background: linear-gradient(to top, #00154c, #12376e, #23487f);
+  color: #fff !important;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.btn-sliding-cta span {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.btn-sliding-cta-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-sliding-cta-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-sliding-cta:hover .btn-sliding-cta-text-one {
+  top: -100%;
+}
+
+.btn-sliding-cta:hover .btn-sliding-cta-text-two {
+  top: 50%;
+}
+

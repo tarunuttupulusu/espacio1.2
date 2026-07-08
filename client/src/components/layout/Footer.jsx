@@ -47,10 +47,10 @@ const Footer = () => {
           </p>
           <Link 
             to="/contact"
-            className="inline-flex items-center gap-2 border border-white/20 hover:border-white bg-transparent hover:bg-white text-white hover:text-ink font-sans text-[13px] font-semibold px-8 py-3.5 rounded-full transition-all duration-300 group"
+            className="btn-sliding-cta"
           >
-            <span>Let's talk</span>
-            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <span className="btn-sliding-cta-text-one">Let's talk</span>
+            <span className="btn-sliding-cta-text-two">Great! ↗</span>
           </Link>
         </div>
       </div>
