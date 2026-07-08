@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/common/SEO';
+import DecryptedText from '../components/ui/DecryptedText';
 
 const faqItems = [
   {
@@ -66,7 +67,9 @@ const FAQ = () => {
             </div>
             
             <h1 className="font-display text-[clamp(32px,3.5vw,48px)] font-bold text-ink leading-tight mb-4">
-              Got Questions?<br />We Have Answers.
+              <DecryptedText text="Got Questions?" animateOn="view" revealDirection="center" />
+              <br />
+              <DecryptedText text="We Have Answers." animateOn="view" revealDirection="center" />
             </h1>
             
             <p className="font-sans text-sm text-ink/60 leading-relaxed mb-10 max-w-[450px]">
