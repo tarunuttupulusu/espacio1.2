@@ -166,7 +166,9 @@ const Contact = () => {
         {step === 1 && (
           <form id="s1" onSubmit={(e) => { e.preventDefault(); handleNext(); }} className="space-y-8">
             <div className="space-y-2">
-              <h2 className="font-editorial text-3xl font-bold text-charcoal">Who are we designing for?</h2>
+              <h2 className="font-editorial text-3xl font-bold text-charcoal">
+                <DecryptedText text="Who are we designing for?" animateOn="view" speed={40} maxIterations={12} />
+              </h2>
               <p className="font-sans text-sm text-walnut">Let's start with your details so we can personalise your experience.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -194,7 +196,9 @@ const Contact = () => {
         {step === 2 && (
           <form id="s2" onSubmit={(e) => { e.preventDefault(); handleNext(); }} className="space-y-8">
             <div className="space-y-2">
-              <h2 className="font-editorial text-3xl font-bold text-charcoal">Tell us about your space.</h2>
+              <h2 className="font-editorial text-3xl font-bold text-charcoal">
+                <DecryptedText text="Tell us about your space." animateOn="view" speed={40} maxIterations={12} />
+              </h2>
               <p className="font-sans text-sm text-walnut">Help us understand what you need so we can match the right design team.</p>
             </div>
 
@@ -280,7 +284,9 @@ const Contact = () => {
         {step === 3 && (
           <form id="s3" onSubmit={(e) => { e.preventDefault(); handleNext(); }} className="space-y-8">
             <div className="space-y-2">
-              <h2 className="font-editorial text-3xl font-bold text-charcoal">Where is your project?</h2>
+              <h2 className="font-editorial text-3xl font-bold text-charcoal">
+                <DecryptedText text="Where is your project?" animateOn="view" speed={40} maxIterations={12} />
+              </h2>
               <p className="font-sans text-sm text-walnut">Share your location and any additional notes for our design team.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -308,7 +314,9 @@ const Contact = () => {
         {step === 4 && (
           <form onSubmit={handleSubmit(handleFinalSubmit)} className="space-y-8">
             <div className="space-y-2">
-              <h2 className="font-editorial text-3xl font-bold text-charcoal">Review your brief.</h2>
+              <h2 className="font-editorial text-3xl font-bold text-charcoal">
+                <DecryptedText text="Review your brief." animateOn="view" speed={40} maxIterations={12} />
+              </h2>
               <p className="font-sans text-sm text-walnut">Everything looks correct? Submit to connect with our design team.</p>
             </div>
 
