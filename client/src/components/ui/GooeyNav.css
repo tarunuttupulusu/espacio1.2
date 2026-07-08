@@ -81,9 +81,9 @@
 /* The clickable label — matches the span role="link" */
 .gooey-nav-container nav ul li span {
   display: inline-block;
-  padding: 0.38rem 1rem;
+  padding: 0.42rem 1.1rem;
   font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1;
@@ -152,9 +152,9 @@
   color: var(--nav-inactive-color);
   transition: color 0.25s ease;
   font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
-  padding: 0.38rem 1rem;
+  padding: 0.42rem 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
